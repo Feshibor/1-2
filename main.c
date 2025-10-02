@@ -1,26 +1,38 @@
 #include <stdio.h>
-#include "queue.h"
+#include <stdlib.h>
+#include <math.h>
+#include <stdbool.h>
+
 
 int main(void) {
-    Queue* queue = createQueue();
-    long long int T, b;
+    long long int T;
     int x = scanf("%lld", &T);
+
     if (x != 1 || T < 1) {
-        printf("IMPUT_ERROR\n");
+        printf("INPUT_ERROR\n");
         return 1;
     }
-    for (int i = 0; i < T; i++) {
-        x = scanf("%lld", &b);
-        enqueue(queue, b);
-        if (x != 1 || b < 1) {
-            printf("IMPUT_ERROR\n");
+
+    long long int* numbers = (long long int*)malloc(T * sizeof(long long int));
+    if (!numbers) {
+        printf("MEMORY_ERROR\n");
+        return 1;
+    }
+
+    for (long long int i = 0; i < T; i++) {
+        x = scanf("%lld", &numbers[i]);
+        if (x != 1 || numbers[i] < 1) {
+            printf("INPUT_ERROR\n");
+            free(numbers);
             return 1;
         }
     }
+
     printf("answer:\n");
-    for (int i = 0; i < T; i++) {
-        printf("%lld \n", Prostoe(Pop(queue)));
+    for (long long int i = 0; i < T; i++) {
+        printf("%lld\n", Prostoe(numbers[i]));
     }
-    destroyQueue(queue);
+
+    free(numbers);  
     return 0;
 }
