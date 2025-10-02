@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "functions.h"
 
-// Тест функции Prime
 void test_prost() {
     assert(Prime(2) == 1);
     assert(Prime(3) == 1);
@@ -15,9 +14,7 @@ void test_prost() {
     assert(Prime(15) == 0);
 }
 
-// Тест функции Prostoe
 void test_prostoe() {
-    // Проверка первых простых чисел
     assert(Prostoe(1) == 2);
     assert(Prostoe(2) == 3);
     assert(Prostoe(3) == 5);
